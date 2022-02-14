@@ -6,6 +6,8 @@ import mathbank.questionbank.core.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserManager implements UserService {
 
@@ -24,6 +26,11 @@ public class UserManager implements UserService {
     @Override
     public void delete(User user) {
         this.userDao.delete(user);
+    }
+
+    @Override
+    public List<User> getAll() {
+        return this.userDao.findAll();
     }
 
 

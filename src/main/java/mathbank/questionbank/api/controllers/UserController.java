@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
@@ -27,6 +29,11 @@ public class UserController {
     @PostMapping("/delete")
     public void delete(User user) {
         this.userService.delete(user);
+    }
+
+    @GetMapping("/getall")
+    public List<User> getAll() {
+        return this.userService.getAll();
     }
 
     @GetMapping("/findByEmail")

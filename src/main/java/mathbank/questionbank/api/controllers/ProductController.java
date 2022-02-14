@@ -40,6 +40,11 @@ public class ProductController {
         return productService.getByProductName(productName);
     }
 
+    @GetMapping("getByProductId")
+    public List<Product> getByProductId(int productId) {
+        return productService.getByProductId(productId);
+    }
+
     @GetMapping("getAllSorted")
     public List<Product> getAllSorted(){
         return this.productService.getAllSorted();

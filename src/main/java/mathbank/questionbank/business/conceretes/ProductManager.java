@@ -49,6 +49,11 @@ public class ProductManager implements ProductService {
     }
 
     @Override
+    public List<Product> getByProductId(int productId) {
+        return productDao.getByProductId(productId);
+    }
+
+    @Override
     public List<Product> getByCategoryIn(List<Integer> categories) {
         return productDao.getByCategoryIn(categories);
     }
