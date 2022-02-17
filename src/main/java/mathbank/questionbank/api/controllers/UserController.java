@@ -20,7 +20,7 @@ public class UserController {
     }
 
     @PostMapping("/add")
-    public User add(User user){
+    public User add(@RequestBody User user){
         return this.userService.add(user);
     }
 
@@ -35,7 +35,7 @@ public class UserController {
     }
 
     @GetMapping("/findByEmail")
-    public User findByEmail(String email){
+    public User findByEmail(@RequestParam String email){
         return this.userService.findByEmail(email);
     }
 }
