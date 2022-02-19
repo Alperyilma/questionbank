@@ -19,13 +19,18 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping("/add")
+    @PostMapping("/addRegister")
     public User add(@RequestBody User user){
-        return this.userService.add(user);
+        return this.userService.addRegister(user);
+    }
+
+    @PostMapping("/addLogin")
+    public User addLogin(@RequestBody User user) {
+        return this.userService.addLogin(user);
     }
 
     @PostMapping("/delete")
-    public void delete(User user) {
+    public void delete(@RequestBody User user) {
         this.userService.delete(user);
     }
 
