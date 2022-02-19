@@ -20,7 +20,7 @@ public class UserController {
     }
 
     @PostMapping("/addRegister")
-    public User add(@RequestBody User user){
+    public User addRegister(@RequestBody User user){
         return this.userService.addRegister(user);
     }
 
