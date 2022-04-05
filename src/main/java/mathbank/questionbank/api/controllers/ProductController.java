@@ -1,5 +1,6 @@
 package mathbank.questionbank.api.controllers;
 
+import lombok.AllArgsConstructor;
 import mathbank.questionbank.business.abstracts.ProductService;
 import mathbank.questionbank.entities.conceretes.Category;
 import mathbank.questionbank.entities.conceretes.Product;
@@ -10,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/products")
-@CrossOrigin
+@CrossOrigin(origins = "*", maxAge = 3600)
 public class ProductController {
 
     private ProductService productService;
@@ -30,7 +31,7 @@ public class ProductController {
         return this.productService.add(product);
     }
 
-    @PostMapping("/delete")
+    @DeleteMapping("/delete")
     public void delete(@RequestBody Product productId){
         this.productService.delete(productId);
     }

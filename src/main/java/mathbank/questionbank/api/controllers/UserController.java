@@ -29,7 +29,7 @@ public class UserController {
         return this.userService.addLogin(user);
     }
 
-    @PostMapping("/delete")
+    @DeleteMapping("/delete")
     public void delete(@RequestBody User user) {
         this.userService.delete(user);
     }

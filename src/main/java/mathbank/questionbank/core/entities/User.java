@@ -1,18 +1,19 @@
 package mathbank.questionbank.core.entities;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 @Table(name = "users")
 public class User {
 
@@ -22,14 +23,14 @@ public class User {
     private int id;
 
     @Email
-    @NotNull
-    @NotBlank
-    @Column(name = "email")
+    @Size(min = 5, max = 150)
+    @NotNull(message = "Please enter your email")
+    @Column(name = "email", nullable = false, unique = true, length = 150)
     private String email;
 
-    @NotNull
-    @NotBlank
-    @Column(name = "password")
+    @Size(min = 4, max = 60, message = "Please enter min 4 characters")
+    @NotNull(message = "Please enter your password")
+    @Column(name = "password", nullable = false, length = 120)
     private String password;
 
 
