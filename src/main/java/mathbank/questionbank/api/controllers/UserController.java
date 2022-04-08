@@ -3,8 +3,8 @@ package mathbank.questionbank.api.controllers;
 import mathbank.questionbank.business.abstracts.UserService;
 import mathbank.questionbank.core.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -24,9 +24,16 @@ public class UserController {
         return this.userService.addRegister(user);
     }
 
-    @PostMapping("/addLogin")
-    public User addLogin(@RequestBody User user) {
-        return this.userService.addLogin(user);
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public String getLogin(@ModelAttribute(name = "loginForm") User loginForm, Model model){
+        String username = loginForm.getEmail();
+        String password = loginForm.getPassword();
+
+        if ("admin".equals(username) && "admin".equals("password")){
+            return "home";
+        }
+        model.addAttribute("invalidCredentials", true);
+        return  "login";
     }
 
     @DeleteMapping("/delete")
@@ -43,4 +50,5 @@ public class UserController {
     public User findByEmail(@RequestParam String email){
         return this.userService.findByEmail(email);
     }
+
 }

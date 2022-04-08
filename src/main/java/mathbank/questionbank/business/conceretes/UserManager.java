@@ -5,7 +5,6 @@ import mathbank.questionbank.core.dataAccess.UserDao;
 import mathbank.questionbank.core.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service
@@ -24,11 +23,6 @@ public class UserManager implements UserService {
     }
 
     @Override
-    public User addLogin(User user) {
-        return this.userDao.save(user);
-    }
-
-    @Override
     public void delete(User user) {
         this.userDao.delete(user);
     }
@@ -38,9 +32,10 @@ public class UserManager implements UserService {
         return this.userDao.findAll();
     }
 
-
     @Override
     public User findByEmail(String email) {
         return userDao.findByEmail(email);
     }
+
+
 }
